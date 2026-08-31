@@ -33,6 +33,7 @@ def ask_for_directory():
     if directory_choice==1:
         print("You have selected Current Directory  ")
         selected_directory = Path.cwd()
+        
         return selected_directory
     
 
@@ -40,12 +41,20 @@ def ask_for_directory():
         print("You have selected Another Directory  ")
     else:
         print("Invalid choice. Please select 1 or 2.")
-        ask_for_directory()    
+        ask_for_directory()
+            
     
+def display_files_in_directory(current_directory):
+    for file in Path.iterdir(current_directory):
+        if file.is_file():
+            print(f"File: {file.name}")
+        elif file.is_dir():
+            print(f"Directory: {file.name}")
 
 #----------------------------------------------------
 if choice==1:
-    ask_for_directory()
+    current_directory = ask_for_directory()
+    print(f"Listing files in directory: {current_directory}")
+    display_files_in_directory(current_directory)
     
-        
-# if user 
+#P
